@@ -160,6 +160,7 @@
     <Compile Include="Controllers\estadoInfraccionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\infraccionController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\pagoController.cs" />
     <Compile Include="Controllers\sancionesController.cs" />
     <Compile Include="Controllers\usuarioController.cs" />
@@ -176,6 +177,8 @@
     <Compile Include="Models\EstadoInfraccion\csEstructuraEstadoInfraccion.cs" />
     <Compile Include="Models\Infraccion\csEstructuraInfraccion.cs" />
     <Compile Include="Models\Infraccion\csInfraccion.cs" />
+    <Compile Include="Models\Login\csEstructuraLogin.cs" />
+    <Compile Include="Models\Login\csLogin.cs" />
     <Compile Include="Models\Pago\csEstructuraPago.cs" />
     <Compile Include="Models\Pago\csPago.cs" />
     <Compile Include="Models\Sanciones\csEstructuraSancion.cs" />
@@ -254,6 +257,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\bootstrap.min.js.map" />
