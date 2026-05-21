@@ -145,5 +145,57 @@ namespace api_InfraccionesOnline.Models.Vehiculo
                 return null;
             }
         }
+
+        public DataSet solvenciaVehicular(int id_vehiculo)
+        {
+            DataSet dsi = new DataSet();
+
+            string conexion = ConfigurationManager.ConnectionStrings["cnConnection"].ConnectionString;
+
+            SqlConnection con = new SqlConnection(conexion);
+
+            try
+            {
+                con.Open();
+
+                string cadena = @"
+        SELECT 
+            v.placa,
+            v.marca,
+            c.nombre AS conductor,
+            i.id_infraccion,
+            i.fecha,
+            s.descripcion AS sancion,
+            s.monto,
+            e.descripcion AS estado
+        FROM Vehiculos v
+        INNER JOIN Conductores c
+            ON v.id_conductor = c.id_conductor
+        INNER JOIN Infracciones i
+            ON v.id_vehiculo = i.id_vehiculo
+        INNER JOIN Sanciones s
+            ON i.id_sancion = s.id_sancion
+        INNER JOIN EstadoInfraccion e
+            ON i.id_estado = e.id_estado
+        WHERE v.id_vehiculo = " + id_vehiculo + @"
+        AND e.descripcion = 'Pendiente'";
+
+                SqlCommand cmd = new SqlCommand(cadena, con);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                da.Fill(dsi);
+
+                dsi.Tables[0].TableName = "lista";
+
+                return dsi;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
     }
+
 }

@@ -1,5 +1,6 @@
-﻿using System.Web.Http;
-using api_InfraccionesOnline.Models.Vehiculo;
+﻿using api_InfraccionesOnline.Models.Vehiculo;
+using System.Data;
+using System.Web.Http;
 using static api_InfraccionesOnline.Models.Vehiculo.csEstructuraVehiculo;
 
 namespace api_InfraccionesOnline.Controllers
@@ -28,6 +29,13 @@ namespace api_InfraccionesOnline.Controllers
                 model.marca,
                 model.id_conductor
             ));
+        }
+
+        [HttpGet]
+        [Route("rest/api/solvenciaVehicular")]
+        public IHttpActionResult solvenciaVehicular(int id_vehiculo)
+        {
+            return Ok(new csVehiculo().solvenciaVehicular(id_vehiculo));
         }
 
         [HttpPost]
